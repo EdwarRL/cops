@@ -1,0 +1,23 @@
+file TMP / Modules\InputData\tmp_WriteFormat.txt /
+put TMP putclose 'par=pProductUni rdim=1 rng=OutputUni!a1' / 'par=pCommitUni rdim=1 rng=UC!a1' / 'par=pProductPlt rdim=1 rng=OutputPlt!a1' /
+                 'par=pENS rdim=1 rng=ENS!a1'  /
+;
+
+execute_unload   'Modules\OutputData\tmp_cops.gdx' plt_t
+* ni pPTDF pLODF
+;
+*execute          'gdxxrw Modules\OutputData\tmp_cops.gdx SQ=n EpsOut=0 O=Modules\OutputData\tmp_cops.xlsx @Modules\InputData\tmp_WriteFormat.txt'
+*;
+
+execute_unload   'Modules\OutputData\Results.gdx'  plt_t plt_h
+;
+
+execute '=gdx2access  Modules\OutputData\Results.gdx' vGenPlt vGenUni vCommitTrmCC
+;
+
+*$else.OptSkipExcelOutput
+*$  log Excel output skipped
+*$endif.OptSkipExcelOutput
+*execute          'del Modules\InputData\tmp_"%gams.user1%".txt'
+
+$OnListing

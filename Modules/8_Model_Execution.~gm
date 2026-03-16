@@ -1,0 +1,10 @@
+model cops / all / ;
+*cops.SolPrint = 1 ; cops.HoldFixed = 1 ;
+
+option optfile ='cplex.opt';
+
+* solve hydrothermal unit commitment model
+solve cops using mip minimizing vTotalCost ;
+
+
+

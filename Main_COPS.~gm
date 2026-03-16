@@ -1,0 +1,35 @@
+
+
+* Call file containing setting of gams
+$include Modules/0_Setting.gms
+
+* Call file containing the sets
+$include Modules/1_Sets.gms
+
+* Call file containing the parameters
+$include Modules/2_Parameters.gms
+
+* Call file containing the code to read data
+$include Modules/3_Read_Data.gms
+
+* Call file containing the varaibles
+$include Modules/4_Variables.gms
+
+* Call file containing the Preprocess of data
+$include Modules/5_PreProcess.gms
+
+* Call file containing the equations definition
+$include Modules/6_Equation_Definition.gms
+
+* Call file containing the equations
+$include Modules/7_Equations.gms
+
+* Call file containing the model execution
+$include Modules/8_Model_Execution.gms
+
+* Call file containing the postprocess
+$include Modules/9_PostProcess.gms
+
+* Call file containing the writeprocess
+$include Modules/10_WriteProcess.gms
+

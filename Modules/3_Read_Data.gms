@@ -1,0 +1,185 @@
+$EOLCOM //
+
+
+sets
+$include Modules\InputData\tmp_Indices.txt
+;
+
+* sets
+* $include Modules\InputData\tmp_Network.txt
+* ;
+
+$include Modules\InputData\tmp_Param.txt
+;
+
+$include Modules\InputData\tmp_Param2.txt
+;
+
+table    tDemand(p,sba)
+$include Modules\InputData\tmp_Demand.txt
+
+// Paramters per unit
+table    tThermalUnitPar(uni_t,*)
+$include Modules\InputData\tmp_ThermalUnitPar.txt
+
+table    tThermalUnitParFuel(uni_t,fuel,*)
+$include Modules\InputData\tmp_ThermalUnitParFuel.txt
+
+table    tHydroUnitPar(uni_h,*)
+$include Modules\InputData\tmp_HydroUnitPar.txt
+
+table    tVarUnitPar(uni_v,*)
+$include Modules\InputData\tmp_VarUnitPar.txt
+
+table    tThermalUniCI(uni_t,*)
+$include Modules\InputData\tmp_ThermalUniCI.txt
+
+// Paramters per plant
+
+table    tThermalPltCI(plt_t,*)
+$include Modules\InputData\tmp_ThermalPltCI.txt
+
+table    tThermalPltPar(plt_t,*)
+$include Modules\InputData\tmp_ThermalPltPar.txt
+
+table    tHydroPltPar(plt_h,*)
+$include Modules\InputData\tmp_HydroPltPar.txt
+
+table    tVarPltPar(plt_v,*)
+$include Modules\InputData\tmp_VarPltPar.txt
+
+table    tDispU(uni,p)
+$include Modules\InputData\tmp_DispU.txt
+
+* table    tThermalDispU(uni_t,p)
+* $include Modules\InputData\tmp_ThermalDispU.txt
+
+* table    tHydroDispU(uni_h,p)
+* $include Modules\InputData\tmp_HydroDispU.txt
+
+* table    tVarDispU(uni_v,p)
+* $include Modules\InputData\tmp_VarDispU.txt
+
+// Paramters per configuration
+table    tConfParameters(plt_t,conf,*)
+$include Modules\InputData\tmp_ConfParameters.txt
+
+table    tConfParameters2(plt_t,conf,*)
+$include Modules\InputData\tmp_ConfParameters2.txt
+
+table    tShutdownRampM1(plt_t,conf,r)
+$include Modules\InputData\tmp_ShutdownRampM1.txt
+
+table    tColdstartupM1(plt_t,conf,r)
+$include Modules\InputData\tmp_ColdstartupM1.txt
+
+table    tWarmstartupM1(plt_t,conf,r)
+$include Modules\InputData\tmp_WarmstartupM1.txt
+
+table    tHotstartupM1(plt_t,conf,r)
+$include Modules\InputData\tmp_HotstartupM1.txt
+
+table    tUpRampRateM2(plt_t,conf,r)
+$include Modules\InputData\tmp_UpRampRateM2.txt
+
+table    tLowerUpRampM2(plt_t,conf,r)
+$include Modules\InputData\tmp_LowerUpRampM2.txt
+
+table    tUpperUpRampM2(plt_t,conf,r)
+$include Modules\InputData\tmp_UpperUpRampM2.txt
+
+table    tDownRampRateM2(plt_t,conf,r)
+$include Modules\InputData\tmp_DownRampRateM2.txt
+
+table    tLowerDownRampM2(plt_t,conf,r)
+$include Modules\InputData\tmp_LowerDownRampM2.txt
+
+table    tUpperDownRampM2(plt_t,conf,r)
+$include Modules\InputData\tmp_UpperDownRampM2.txt
+
+table    tDownRampM3(plt_t,conf,*)
+$include Modules\InputData\tmp_DownRampM3.txt
+
+table    tUpRampM3(plt_t,conf,*)
+$include Modules\InputData\tmp_UpRampM3.txt
+
+table    tOfferConfigThermalCC(pltt_cc,conf,*)
+$include Modules\InputData\tmp_OfferConfigThermalCC.txt
+
+table    tAvalConfigThermalCC(pltt_cc,conf,p)
+$include Modules\InputData\tmp_AvalConfigThermalCC.txt
+
+table    tThmCCTransitionConf(pltt_cc,conf,conf,*)
+$include Modules\InputData\tmp_ThmCCTransitionConf.txt
+
+table    tTULTCC(pltt_cc,conf,conf,*)
+$include Modules\InputData\tmp_TULTCC.txt
+
+table    tUnitWeightsPer(uni,p,zn)
+$include Modules\InputData\tmp_UnitWeightsPer.txt
+
+table    tUnitWeights(uni,zn)
+$include Modules\InputData\tmp_UnitWeights.txt
+
+table    ttypeZona(zntype,zn)
+$include Modules\InputData\tmp_typeZona.txt
+
+table    tUnitZoneReq(zn,p)
+$include Modules\InputData\tmp_UnitZoneReq.txt
+
+table    tMWminZoneReq(zn,p)
+$include Modules\InputData\tmp_MWminZoneReq.txt
+
+table    tMWmaxZoneReq(zn,p)
+$include Modules\InputData\tmp_MWmaxZoneReq.txt
+
+table    tAreaImportLim(ar,p)
+$include Modules\InputData\tmp_AreaImportLim.txt
+
+table    tMinimumGenPlt(plt,p)
+$include Modules\InputData\tmp_MinimumGenPlt.txt
+
+table    tMaxGenPlt(plt,p)
+$include Modules\InputData\tmp_MaxGenPlt.txt
+
+table    tMOGenPlt(plt,p)
+$include Modules\InputData\tmp_MOGenPlt.txt
+
+table    tPruGenUni(uni,p)
+$include Modules\InputData\tmp_PruGenUni.txt
+
+
+table    tDisPltCOM(plt,p)
+$include Modules\InputData\tmp_DisPltCOM.txt
+
+* table    tPTDF(ni,Br)
+* $include Modules\InputData\tmp_PTDF.txt
+
+* table    tLODF(Br,Brk)
+* $include Modules\InputData\tmp_LODF.txt
+
+;
+
+*****************   CONSULTA A BASE DE DATOS ACCESS   *********************
+*Llamar el archivo con el sql2gams
+*$call =sql2gms @Queries.txt
+******************* FIN CONSULTAS A TABLAS ****************************
+
+$ONTEXT
+
+
+
+
+table    topreserve(p,z)
+$include Modules\InputData\tmp_opreserve.txt
+table    tReservoir(e,*)
+$include Modules\InputData\tmp_reservoir.txt
+
+table    tInflows(p,e)
+$include Modules\InputData\tmp_inflows.txt
+
+table    tminsysreserve(p,*)
+$include Modules\InputData\tmp_minsysreserve.txt
+$OFFTEXT
+
+

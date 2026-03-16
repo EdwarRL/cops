@@ -1,0 +1,199 @@
+
+$EOLCOM //
+
+file logFile / Modules\OutputData\LogExecution.txt /
+
+put logFile;
+
+
+parameters
+pDemandSba         (p,sba )    hourly load per subarea                                                          [MW]
+pInertia                             System inertia requiretment                                           [sec]
+
+// Thermal unit parameters
+pTMinProd       (      uni_t,fuel        )    minimum output of thermal units                                                         [MW]
+pMinUpT         (      uni_t,fuel        )    minimum up time                                                        [hours]
+pMinDownT       (      uni_t,fuel       )    minimum down time                                                      [hours]
+pStartUpxDayFuel(      uni_t,fuel        )    Maximum startups per day-fuel                                               [p.u.]
+pStartUpxDay    (      uni_t             )    Maximum startups per day                                               [p.u.]
+pStartUpCost    (      uni_t,fuel,tstate )    Startup cost                                                           [USD]
+pTmStStIni      (      uni_t,fuel,tstate )    Shutdown time in hours to be considered in a thermal state             [hours]
+pTmStStFin      (      uni_t,fuel,tstate )    Shutdown time in hours to be considered in a thermal state             [hours]
+pUnitType       (      uni_t             )    Define if unit is combustion of steam
+// Hydro unit parameters
+pHydroMinProd       (      uni_h        )    minimum output of hydro units                                                         [MW]
+
+// Variable unit parameters
+pVarMinProd       (      uni_v        )    minimum output of hydro units                                                         [MW]
+
+// Offer parameters
+pThmMaxprodUni       (      uni_t,p      )    maximum thermal generation output                [MW]
+pHydMaxprodUni       (      uni_h,p      )    maximum hydro generation output                [MW]
+pVarMaxprodUni       (      uni_v,p     )     maximum renewable generation output              [MW]
+
+// Thermal unit initial condition
+pGenUniIni         (      uni_t        )    Power output at the initial condition                       [MW]
+pCountOnUni        (      uni_t        )    Online hours at the initial condition                                       [Hours]
+pCountOffUni       (      uni_t        )    Shutdown hours at the initial condition                                    [Hours]
+
+onoff_t0Uni       (       uni_t       )     Thermal Unit on-off status at t=0                             [1-0]
+L_up_minUni        (      uni_t,fuel        )    Thermal Unit minimum up time                                  [Hours]
+L_down_minUni      (      uni_t,fuel        )    Thermal Unit minimum down time                                  [Hours]
+
+// Thermal plant initial condition
+pGenPltiIni         (      plt_t       )    Power output at the initial condition                       [MW]
+pConfPltIni       (      plt_t        )
+TypeMod_CI (      plt_t        )
+ThermalState_CI (      plt_t        )
+
+*Themal plants parameters
+pThermalCSVarCost      (       plt_t       )   CS thermal plants variable cost                               [USD per MWh]
+
+pThermalCCVarCost      (       pltt_cc,conf       )   CC thermal plants variable cost per configuration        [USD per MWh]
+pTrmCCDispConf         (       pltt_cc,conf,p       )   CC thermal plants avaliability per configuration
+pTrmPltMinConf          (       plt_t,conf       )  thermal plants minimum per configuration
+pTrmPltMaxConf          (       plt_t,conf       ) thermal plants maximun per configuration
+
+pThmConf              (plt_t)               CS thermal plants configuration
+pTrmCSMinConf(pltt_cs)                          CS thermal plants minimun of the day configuration
+pTrmCSMaxConf(pltt_cs)                          CS thermal plants maximun of the day configuration
+
+pThmPltNumUniComb(plt_t,conf)                       Numbre of burning units of thermal planta per configuration
+pThmPltNumUniSteam(plt_t,conf)                       Numbre of steam units of thermal planta per configuration
+pThmPltTotalUni(plt_t,conf)                       Numbre of steam units of thermal planta per configuration
+
+*Hydro plants parameters
+pHydroVarCost       (      plt_h     )    hydro plants variable cost                       [USD per MWh]
+
+*Hydro plants parameters
+pVarVarCost       (      plt_v     )    hydro plants variable cost                       [USD per MWh]
+
+*Disponibilidad de las pantas térmicas, se calcula con la suma de las undiades
+pDispThmPlt(plt_t,p)
+
+* Thermal plants ramps parameter
+pHotStartUpRampsThmPltConf     (      plt_t,conf,    r  )    hot start up ramps                               [MW]
+pWarmStartUpRampsThmPltConf    (      plt_t,conf,    r  )    warm start up ramps                              [MW]
+pColdStartUpRampsThmPltConf    (      plt_t,conf,    r  )    cold start up ramps                              [MW]
+pNumBlkHotThmPltConf            (      plt_t,conf        )    number of blocks for hot startup ramp            [p.u.]
+pNumBlkWarmThmPltConf           (      plt_t,conf        )    number of blocks for warm startup ramp           [p.u.]
+pNumBlkColdThmPltConf          (      plt_t,conf        )    number of blocks for cold startup ramp           [p.u.]
+
+pShutdownRampsPltConf   (      plt_t,conf, r   )    shut down ramps                                  [MW]
+pNumBlkDRThmPltConf          (      plt_t,conf        )    number of blocks for shutdown ramp           [p.u.]
+
+pPosRampHot        (plt_t,conf,r, p )    hours to hot startup ramp                        [hours]
+pPosRampWarm         (plt_t,conf,r, p )    hours to warm startup ramp                       [hours]
+pPosRampCold         (plt_t,conf,r, p )    hours to cold startup ramp                       [hours]
+
+pPosRampDR         (plt_t,conf,r, p )    hours to cold startup ramp                       [hours]
+
+// Parameters model 2
+pUpRateRmp      ( plt_t,conf,    r   )    up ramp rate                                     [MW]
+pLowerUpRate    ( plt_t,conf,    r   )    lower up ramp limit                              [MW]
+pUpperUpRate    ( plt_t,conf,    r   )    upper up ramp limit                              [MW]
+pDownRateRmp    ( plt_t,conf,    r   )    down ramp rate                                   [MW]
+pLowerDownRate  ( plt_t,conf,    r   )    lower down ramp limit                            [MW]
+pUpperDownRate  ( plt_t,conf,    r   )    upper down ramp limit                            [MW]
+
+// Parameters model 3
+pUpRampMod3     ( plt_t,conf,      l)    coefficients model 3 up ramp                     [MW]
+pDownRampMod3   ( plt_t,conf,      l)    coefficients model 3 down ramp                   [MW]
+pURMod3         ( plt_t,conf        )    upper up ramp limit model 3                      [MW]
+pDRMod3         ( plt_t,conf        )    lower up ramp limit model 3                      [MW]
+
+
+pTrmPltStartConf          ( plt_t,conf )  CC thermal plants boolean start per configuration
+pTrmPltShutdownConf          ( plt_t,conf )  CC thermal plants boolean shutdown per configuration
+
+// Thermal CC transitions parameter
+pTrmCCPltTransition(pltt_cc,conf,conf)
+
+
+pWeightUnitZone(uni,zn)
+pZoneType(zntype,zn)
+pUnitZoneReq(zn,p)
+pMWminZoneReq(zn,p)
+pMWmaxZoneReq(zn,p)
+
+pArImportLim(ar,p)
+
+pMinGenPlt(plt,p)
+pMaxGenPlt(plt,p)
+pMOGenPlt(plt,p)
+
+
+// Parámetros para las condiciones iniciales
+TypeMod_CI(plt_t)
+vGenTrmPltM2_CI(plt_t)
+vGenTrmPltURM1_CI(plt_t)
+
+* pPTDF(ni,Br)
+* pLODF(Br,Brk)
+
+* SubLoad(LoadFkey)
+* FSubLoad(LoadFkey)
+
+$ONTEXT
+
+pTInertia       (      uni_t        )    Intertia contribution                                                    [sec]
+pHInertia     (      uni_h        )    Intertia contribution                            [sec]
+
+// Hydro unit parameters
+pProdFunct      (      uni_h        )    production function                              [MWh per m3]
+
+// Initial conditions Units
+
+pSt0            (      uni_t        )    status at the first period                                             [p.u.]
+
+
+
+
+
+pConfig         (      plt_t        )    Thermal plant configuration                      [p.u.]
+pud0            (      plt_t        )    minimum production at t0                         [0-1]
+
+
+
+pMTShutdown     (      plt_t        )    minimum production shut down                     [MW]
+
+
+
+
+
+
+
+pMaxReserve     (  e            )    maximum reserve                                  [hm3]
+pMinReserve     (  e            )    minimum reserve                                  [hm3]
+pMinReservereq  (  e            )    minimum reserve required                         [hm3]
+pIniReserve     (  e            )    initial reserve                                  [hm3]
+pFinReserve     (  e            )    Final reserve target                             [hm3]
+
+pInflows        (p,e            )    inflows                                          [hm3]
+pSysMinReserve  (p              )    System minimum reserve required                  [p.u.]
+
+$OFFTEXT
+
+* general parameters
+pENSCost                             energy non-served cost                           [USD per MWh]
+pTransNet                            option to include transmission network
+pTightPoolSim                        option to define the simulation type
+pM                                   Up limit                                         /9999/
+pNumHours                            number of hours per day                          /24/
+pDayCount                            number of days in a week                         /1/
+pInflowsCF                           Inflows conversion factors                       /3600/
+pTermicaDia                          Mínima generación térmica en le día [GWh/día] 
+
+*Outputs plants
+pProductUni        (uni,    p        )    production of the unit                           [MW]
+pCommitUni        (uni,    p        )    commitment of the unit                           [0-1]
+pProductPlt        (plt,    p        )    production of the unit                           [MW]
+pENS               (p              )    Non served energy output                         [MW]
+
+*pReserve        (p,e            )    reservoir level                                  [hm3]
+
+;
+
+
+
+

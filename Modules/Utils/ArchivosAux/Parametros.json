@@ -1,0 +1,44 @@
+{
+  "Parametros":{
+    "Tipo_Ejecucion": "MT",
+    "Ano": "2026",
+    "Mes": "3",
+    "Carpeta": "Semana_0316",
+    "Fecha_Inicial": "16/03/2026",
+    "Fecha_Final": "22/03/2026",
+    "Nombre_Archivo": "mar13_may31",
+    "Tipo_Caso": "Nacional",
+    "Solver": "Gams",
+    "Fecha_Demanda": "09/03/2026",
+    "TipoMod": "IDE"
+  },
+  "BanderasFile":{
+    "CB_ArchivoDem": "Falso",
+    "CB_ArchivoAccess": "Verdadero",
+    "CB_TipoDia": "Verdadero"
+  },
+  "BanderasLoadPrecios":{
+    "CB_LoadPrecios": "Verdadero",
+    "CB_LoadPreciosTPL": "Verdadero"
+  },
+  "BanderasMod":{
+    "CB_CI": "Falso",
+    "LoadData": "Falso"
+  },
+  "BanderasControl":{
+    "LoadMmtos": "Verdadero",
+    "LoadCI": "Verdadero",
+    "LoadPrecio": "Verdadero",
+    "CreateFile": "Verdadero",
+    "RunSim": "Verdadero",
+    "CreateFolder": "Verdadero"
+  },
+  "Pws":{
+    "UsuarioXm": "1060588666",
+    "PwsXm": "Alejo230710*+"
+  },
+  "Paths": {
+    "AEnerPath": "C:\\Alejo\\AnalisisEnergetico\\Corto_Mediano_Plazo\\"
+  }
+
+}
