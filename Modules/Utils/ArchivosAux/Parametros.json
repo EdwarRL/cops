@@ -3,17 +3,17 @@
     "Tipo_Ejecucion": "MT",
     "Ano": "2026",
     "Mes": "3",
-    "Carpeta": "Semana_0316",
-    "Fecha_Inicial": "16/03/2026",
-    "Fecha_Final": "22/03/2026",
-    "Nombre_Archivo": "mar13_may31",
+    "Carpeta": "Semana_0324",
+    "Fecha_Inicial": "19/03/2026",
+    "Fecha_Final": "31/05/2026",
+    "Nombre_Archivo": "mar19_may31",
     "Tipo_Caso": "Nacional",
-    "Solver": "Gams",
-    "Fecha_Demanda": "09/03/2026",
-    "TipoMod": "IDE"
+    "Solver": "Gurobi",
+    "Fecha_Demanda": "16/03/2026",
+    "TipoMod": "DESPACHO"
   },
   "BanderasFile":{
-    "CB_ArchivoDem": "Falso",
+    "CB_ArchivoDem": "Verdadero",
     "CB_ArchivoAccess": "Verdadero",
     "CB_TipoDia": "Verdadero"
   },
@@ -22,15 +22,15 @@
     "CB_LoadPreciosTPL": "Verdadero"
   },
   "BanderasMod":{
-    "CB_CI": "Falso",
-    "LoadData": "Falso"
+    "CB_CI": "Verdadero",
+    "LoadData": "Verdadero"
   },
   "BanderasControl":{
     "LoadMmtos": "Verdadero",
     "LoadCI": "Verdadero",
-    "LoadPrecio": "Verdadero",
-    "CreateFile": "Verdadero",
-    "RunSim": "Verdadero",
+    "LoadPrecio": "Falso",
+    "CreateFile": "Falso",
+    "RunSim": "Falso",
     "CreateFolder": "Verdadero"
   },
   "Pws":{
